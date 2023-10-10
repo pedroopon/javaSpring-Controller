@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <title>Controller Pessoa</title>
+</head>
+<body>
+    <h1>Integração front e back end</h1>
+    <h2>Aperte o botão para receber a messagem do back end</h2>
+    <h2 id="message_webapi">...</h2>
+    <button onclick="chamarapi()"> Enviar solicitação </button>
+    
+</body>
+</html>
+
+<script>
+    function chamarapi(){
+  $.ajax({
+    url: "http://localhost:8081/pessoa",
+    type: "GET",
+    dataType: "json",
+    success: function (resposta) {
+        $("#message_webapi").text(JSON.stringify(resposta))
+    },
+    error: function (request, message, error) {
+        alert(message)
+    }
+  })
+
+}
+
+</script>
